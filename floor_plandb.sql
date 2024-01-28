@@ -53,4 +53,10 @@ create table admin
     admin_id int,
     admin_name varchar(255)
 );
+ALTER TABLE meeting_rooms
+ADD admin_id int;
+ALTER TABLE meeting_rooms
+ADD  foreign key(admin_id) references admin(admin_id);
+ALTER TABLE admin
+add password int;
     
