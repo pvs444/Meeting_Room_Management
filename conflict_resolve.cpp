@@ -2,10 +2,7 @@
 #include <vector>
 #include <algorithm>
 
-struct Conflict {
-    int x, y; // Coordinates of the conflict area
-    // Other relevant conflict information
-};
+
 
 struct Task {
     int priority; // Company Priority
@@ -26,18 +23,14 @@ bool compareTasks(const Task& task1, const Task& task2) {
     return task1.timestamp < task2.timestamp; // Earlier timestamp first
 }
 
-void resolveConflicts(std::vector<Conflict>& conflicts, std::vector<Task>& tasks) {
+void resolveConflicts(std::vector<Task>& tasks) {
     // Sort tasks based on the defined criteria
     std::sort(tasks.begin(), tasks.end(), compareTasks);
 
     // Assign tasks to conflicts based on the sorted order
     for (const Task& task : tasks) {
         // Assign the task to the conflict with the highest priority
-        // (you may need to implement logic to find conflicts in the vicinity)
-        // Update the conflict's status/color accordingly
         std::cout << "Task with priority " << task.priority << ", user role " << task.userRole
-                  << ", and timestamp " << task.timestamp << " assigned to conflict at coordinates ("
-                  << conflicts[0].x << ", " << conflicts[0].y << ")" << std::endl;
-        // Update conflict color and other details
+                  << ", and timestamp " << task.timestamp << " assigned to conflict " << std::endl;
     }
 }
